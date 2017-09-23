@@ -11,20 +11,22 @@ If you
 
 ### Usage
 
-    new PromiseTick(
-        (res, rej, tick) => {
-            const i = setInterval(_ => tick('progress'), 200);
-            setTimeout(_ => {
-                // `tick` will stop after `res()` is invoked, but the interval
-                // in this example would keep running without this line
-                clearInterval(i);
-                // resolve
-                res('done');
-            }, 5000);
-        }
-    ).tick(console.warn).then(console.log, console.error);
-    // same as
-    // .then(console.log, console.error, console.warn);
+```js
+new PromiseTick(
+    (res, rej, tick) => {
+        const i = setInterval(_ => tick('progress'), 200);
+        setTimeout(_ => {
+            // `tick` will stop after `res()` is invoked, but the interval
+            // in this example would keep running without this line
+            clearInterval(i);
+            // resolve
+            res('done');
+        }, 5000);
+    }
+).tick(console.warn).then(console.log, console.error);
+// same as
+// .then(console.log, console.error, console.warn);
+```
 
 ### Notes
 
