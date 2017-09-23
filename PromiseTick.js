@@ -21,7 +21,9 @@ class PromiseTick extends Promise {
     }
     
     then(res, rej, tick) {
-        this.tick(tick);
+        if (tick) {
+            this.tick(tick);
+        }
         return super.then(res, rej);
     }
 }
